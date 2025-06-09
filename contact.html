@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #b7b1b3;
+
+        }
+        @media (max-width: 375px){
+            .login{
+
+                width: 300px;
+                height: 500px;
+                font-size: 15px;
+            }
+            .txt{
+                font-size: 20px;
+                width: 250px;
+            }
+        }
+        .login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 600px;
+            border: 2px solid black;
+            text-align: center;
+            border-radius: 15px;
+            font-size: 20px;
+            background-color: #afacad;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.403);
+        }
+
+        .login-1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        input {
+            width: 250px;
+            height: 25px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: transparent;
+        }
+
+        button {
+            width: 100px;
+            height: 25px;
+            background-color: #7872749b;
+            border-radius: 10px;
+            transition: 0.5s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .but {
+            width: 150px;
+            background-color: transparent;
+            border: none;
+            text-decoration: underline;
+            color: rgb(182, 36, 36);
+        }
+
+        .txt {
+            font-size: 35px;
+            font-weight: bolder;
+            top: -20%;
+            transform: translate(0, -100%);
+        }
+
+        input:hover {
+            transform: scale(1.1);
+            transition: 0.5s;
+            background-color: #a19c9e;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.403);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            transition: 0.5s;
+            background-color: #a19c9e;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.403);
+            border: none;
+        }
+
+        .but:hover {
+            background-color: transparent;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login" style="z-index: 999;"><br>
+        <div class="login-1">
+            <p class="txt">Log-in to Clothe's Duniya</p>
+            <!-- Phone  -->
+            <input type="text" placeholder="Enter Phone Number" onkeyup="mail(this)"><br>
+            <p id="valid-1" style="font-size: 9px; text-align: left; position: absolute;"></p> <br>
+            <!-- Pass  -->
+            <input type="password" placeholder="Enter your Password" style="margin-top: 10px;" onkeyup="pass(this)"><br>
+            <p id="res" style="font-size: 9px; text-align: left; position: absolute;"></p><br>
+            <button onclick="allceck()">Login</button>
+            <button class="but" onclick="sign()">Not a User? Sign-in</button>
+        </div>
+    </div>
+    <div class="login" style="z-index: 0;" id="sin">
+        <div class="login-1">
+            <p class="txt" style="margin-top: 0%; transform: translate(0, -90%);">Sign-in to Clothe's Duniya</p>
+            <input type="text" placeholder="Enter your Name" onkeyup="nam(this)"> <br>
+
+
+            <input type="text" placeholder="Enter your Phone Number" style="margin-top: 10px;"
+                onkeyup="mail1(this)"><br>
+
+
+
+
+
+            <input type="password" placeholder="Enter your Password" onkeyup="signin(this)"
+                style="margin-top: 10px;"><br>
+
+
+            <p id="valid-2"></p>
+
+
+            <input type="password" placeholder="re-enter your Password" onkeyup="sign2(this)"><br>
+
+
+            <p id="valid-1-1" style=" font-size: 9px; text-align: left; position: absolute;"></p>
+            <p id="valid-1-2" style=" font-size: 9px; text-align: left; position: absolute;"></p>
+            <p id="valid-1-3" style=" font-size: 9px; text-align: left; position: absolute;"></p>
+
+            <button style="margin-top: 30px;" onclick="alert('Your account is created succesfully')">Sign Up</button>
+            <button style="margin-top: 30px;" class="but" onclick="log()">Log-in</button>
+        </div>
+    </div>
+</body>
+<script>
+    var pas;
+    var mob;
+    var mobile;
+    var password;
+    var name1;
+    function sign() {
+        document.getElementById('sin').style.zIndex = 999;
+    }
+    function log() {
+        document.getElementById('sin').style.zIndex = 0;
+    }
+    function mail(x) {
+        if(mob == x.value){
+            document.getElementById('valid-1').innerText = ""
+            mobile = x.value;
+        }
+    }
+    function nam(c){
+          if (c.value.length >5) {
+            name1 = c.value;
+          }
+    }
+    function mail1(x) {
+
+        if ((isNaN(x.value))) {
+            document.getElementById('valid-1-1').innerText = "Enter a mobile number"
+
+        }
+        else {
+            if (x.value.length != 10) {
+                document.getElementById('valid-1-1').innerText = "Pleace enter a valid mobile number"
+            }
+            if (x.value.length == 10) {
+                document.getElementById('valid-1-1').innerText = ""
+                mob = x.value;
+            }
+
+        }
+    }
+    function pass(a){
+        if(a.value == pas){
+            document.getElementById('res').innerText = ""
+            password = a.value;
+        }
+    }
+    function signin(y) {
+        if (y.value.length > 8 && /[A-Z]/.test(y.value) && /[a-z]/.test(y.value) && /[0-9]/.test(y.value) && /[!@#$%^&*]/.test(y.value)) {
+            document.getElementById('valid-1-2').innerText = ""
+            pas = y.value;
+        }
+
+        else {
+            document.getElementById('valid-1-2').innerText = "Pleace enter a strong password"
+        }
+    }
+    function sign2(z){
+        if(z.value == pas){
+            document.getElementById('valid-1-2').innerText = ""
+        }
+        else{
+            document.getElementById('valid-1-2').innerText = "Pleace enter the same password"
+        }
+    }
+
+    function allceck(){
+        if (mobile == mob) {
+            if (password == pas) {
+                alert("Welcome :)")
+            }
+            else{
+                alert("Your password is incorrect");
+            }
+        }
+        else{
+            
+                alert("Mobile number not found")
+            
+        }
+    }
+    console.log(mob)
+</script>
+
+</html>
